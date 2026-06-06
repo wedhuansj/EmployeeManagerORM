@@ -1,9 +1,19 @@
 package model;
 
+import jakarta.persistence.*;
+
+import java.util.ArrayList;
+import java.util.List;
+
+@Entity
+@Table (name = "position")
 public class Position {
-    String id;
-    String name;
-    double allowance;
+    @Id
+    private String id;
+    private String name;
+    private double allowance;
+    @ManyToMany(mappedBy = "positions")
+    private List<Employee> employees = new ArrayList<>();
     public Position() {}
     public Position(double allowance, String name, String id) {
         this.allowance = allowance;
@@ -16,4 +26,6 @@ public class Position {
     public void setName(String name) { this.name = name; }
     public double getAllowance() { return allowance; }
     public void setAllowance(double allowance) { this.allowance = allowance; }
+    public List<Employee> getEmployees() { return employees; }
+    public void setEmployees(List<Employee> employees) { this.employees = employees; }
 }

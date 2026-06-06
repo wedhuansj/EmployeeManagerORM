@@ -8,15 +8,13 @@ import java.util.List;
 @Entity
 @Table (name = "department")
 public class Department {
-    @EmbeddedId
-    @Column (name = "id")
-    String id;
-    @Column (name = "name")
-    String name;
+    @Id
+    private String id;
+    private String name;
     @Column (name = "manager_name")
-    String managerName;
-    //@OneToMany(mappedBy = "employee")
-    //List<Employee> employees = new ArrayList<>();
+    private String managerName;
+    @OneToMany(mappedBy = "department")
+    private List<Employee> employees = new ArrayList<>();
     public Department() {}
     public Department(String id, String name, String managerName) {
         this.id = id;
@@ -28,5 +26,5 @@ public class Department {
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }
     public String getManagerName() { return managerName; }
-    public void setManagerName(String manager_name) { this.managerName = manager_name; }
+    public void setManagerName(String managerName) { this.managerName = managerName; }
 }

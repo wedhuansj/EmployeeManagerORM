@@ -1,8 +1,7 @@
-import config.ORMConfig;
-import jakarta.persistence.EntityManager;
+import controller.EmployeeController;
 
 public class Main {
     public static void main(String[] args) {
-        EntityManager em = ORMConfig.getEntityManagerFactory().createEntityManager();
+        EmployeeController.getInstance().start();
     }
 }
